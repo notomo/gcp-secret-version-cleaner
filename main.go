@@ -44,7 +44,7 @@ func main() {
 
 		Commands: cli.Commands{
 			{
-				Name: "destory",
+				Name: "destroy",
 				Action: func(c *cli.Context) error {
 					baseTransport := app.LogTransport(c.String(paramLogDir), http.DefaultTransport)
 
