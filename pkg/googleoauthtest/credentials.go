@@ -16,10 +16,10 @@ func CredentialsJSON() []byte {
 }`)
 }
 
-func CreateGoogleApplicationCredentials(
-	t *testing.T,
-	dirPath string,
-) {
+func SetGoogleApplicationCredentials(t *testing.T) {
+	t.Helper()
+
+	dirPath := t.TempDir()
 	credentialsFilePath := filepath.Join(dirPath, "application_default_credentials.json")
 	if err := os.WriteFile(credentialsFilePath, CredentialsJSON(), 0700); err != nil {
 		t.Fatal(err)

@@ -1,4 +1,4 @@
-package app
+package app_test
 
 import (
 	"context"
@@ -6,15 +6,14 @@ import (
 
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"github.com/jarcoal/httpmock"
+	"github.com/notomo/gcp-secret-version-cleaner/app"
 	"github.com/notomo/gcp-secret-version-cleaner/pkg/googleoauthtest"
 	"github.com/notomo/gcp-secret-version-cleaner/pkg/httpmockext"
 	"github.com/notomo/gcp-secret-version-cleaner/pkg/secretmanagerext/secretmanagertest"
 )
 
 func TestDestroy(t *testing.T) {
-	tmpDir := t.TempDir()
-
-	googleoauthtest.CreateGoogleApplicationCredentials(t, tmpDir)
+	googleoauthtest.SetGoogleApplicationCredentials(t)
 
 	projectName := "test"
 	secretName := "test_secret"
@@ -34,13 +33,13 @@ func TestDestroy(t *testing.T) {
 		transport.RegisterResponder(secretmanagertest.DestroyVersionResponse(t, projectName, secretName, 2))
 		transport.RegisterResponder(secretmanagertest.DestroyVersionResponse(t, projectName, secretName, 3))
 
-		err := Destroy(
+		err := app.Destroy(
 			context.Background(),
 			projectName,
 			secretName,
 			"",
 			0,
-			LogTransport(logDir, transport),
+			app.LogTransport(logDir, transport),
 			false,
 		)
 		if err != nil {
@@ -59,13 +58,13 @@ func TestDestroy(t *testing.T) {
 			secretmanagerpb.SecretVersion_ENABLED,
 		}))
 
-		err := Destroy(
+		err := app.Destroy(
 			context.Background(),
 			projectName,
 			secretName,
 			"",
 			0,
-			LogTransport(logDir, transport),
+			app.LogTransport(logDir, transport),
 			true,
 		)
 		if err != nil {
@@ -83,13 +82,13 @@ func TestDestroy(t *testing.T) {
 			secretmanagerpb.SecretVersion_DESTROYED,
 		}))
 
-		err := Destroy(
+		err := app.Destroy(
 			context.Background(),
 			projectName,
 			secretName,
 			"",
 			0,
-			LogTransport(logDir, transport),
+			app.LogTransport(logDir, transport),
 			false,
 		)
 		if err != nil {
@@ -111,13 +110,13 @@ func TestDestroy(t *testing.T) {
 		transport.RegisterResponder(secretmanagertest.DestroyVersionResponse(t, projectName, secretName, 1))
 		transport.RegisterResponder(secretmanagertest.DestroyVersionResponse(t, projectName, secretName, 2))
 
-		err := Destroy(
+		err := app.Destroy(
 			context.Background(),
 			projectName,
 			secretName,
 			"",
 			2,
-			LogTransport(logDir, transport),
+			app.LogTransport(logDir, transport),
 			false,
 		)
 		if err != nil {
