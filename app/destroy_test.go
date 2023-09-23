@@ -7,6 +7,7 @@ import (
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"github.com/jarcoal/httpmock"
 	"github.com/notomo/gcp-secret-version-cleaner/pkg/googleoauthtest"
+	"github.com/notomo/gcp-secret-version-cleaner/pkg/httpmockext"
 	"github.com/notomo/gcp-secret-version-cleaner/pkg/secretmanagerext/secretmanagertest"
 )
 
@@ -21,6 +22,8 @@ func TestDestroy(t *testing.T) {
 
 	t.Run("deletes secret versions", func(t *testing.T) {
 		transport := httpmock.NewMockTransport()
+		defer httpmockext.AssertCalled(t, transport)
+
 		transport.RegisterResponder(googleoauthtest.TokenResponse())
 		transport.RegisterResponder(secretmanagertest.ListVersionsResponse(t, projectName, secretName, []secretmanagerpb.SecretVersion_State{
 			secretmanagerpb.SecretVersion_ENABLED,
@@ -47,6 +50,8 @@ func TestDestroy(t *testing.T) {
 
 	t.Run("does not delete secret version in dry run", func(t *testing.T) {
 		transport := httpmock.NewMockTransport()
+		defer httpmockext.AssertCalled(t, transport)
+
 		transport.RegisterResponder(googleoauthtest.TokenResponse())
 		transport.RegisterResponder(secretmanagertest.ListVersionsResponse(t, projectName, secretName, []secretmanagerpb.SecretVersion_State{
 			secretmanagerpb.SecretVersion_ENABLED,
@@ -70,6 +75,8 @@ func TestDestroy(t *testing.T) {
 
 	t.Run("ignores destroyed secret version", func(t *testing.T) {
 		transport := httpmock.NewMockTransport()
+		defer httpmockext.AssertCalled(t, transport)
+
 		transport.RegisterResponder(googleoauthtest.TokenResponse())
 		transport.RegisterResponder(secretmanagertest.ListVersionsResponse(t, projectName, secretName, []secretmanagerpb.SecretVersion_State{
 			secretmanagerpb.SecretVersion_DESTROYED,
@@ -92,6 +99,8 @@ func TestDestroy(t *testing.T) {
 
 	t.Run("can keep recent versions", func(t *testing.T) {
 		transport := httpmock.NewMockTransport()
+		defer httpmockext.AssertCalled(t, transport)
+
 		transport.RegisterResponder(googleoauthtest.TokenResponse())
 		transport.RegisterResponder(secretmanagertest.ListVersionsResponse(t, projectName, secretName, []secretmanagerpb.SecretVersion_State{
 			secretmanagerpb.SecretVersion_DISABLED,
