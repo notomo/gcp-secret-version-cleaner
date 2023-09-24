@@ -44,7 +44,8 @@ func main() {
 
 		Commands: cli.Commands{
 			{
-				Name: "destroy",
+				Name:        "destroy",
+				Description: "destroy secret version",
 				Action: func(c *cli.Context) error {
 					baseTransport := app.LogTransport(c.String(paramLogDir), http.DefaultTransport)
 
@@ -81,7 +82,8 @@ func main() {
 			},
 
 			{
-				Name: "disable",
+				Name:        "disable",
+				Description: "disable secret version",
 				Action: func(c *cli.Context) error {
 					baseTransport := app.LogTransport(c.String(paramLogDir), http.DefaultTransport)
 
