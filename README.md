@@ -16,3 +16,7 @@ go run github.com/notomo/gcp-secret-version-cleaner@latest --project=${PROJECT_N
 ```
 go run github.com/notomo/gcp-secret-version-cleaner@latest --project=${PROJECT_NAME} --secret-name=${SECRET_NAME} destroy --dry-run
 ```
+- dry run disable
+```
+go run github.com/notomo/gcp-secret-version-cleaner@latest --project=${PROJECT_NAME} --secret-name=${SECRET_NAME} disable --dry-run
+```

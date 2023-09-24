@@ -78,3 +78,31 @@ func DestroyVersionResponse(
 		url,
 		httpmock.NewStringResponder(http.StatusOK, body.String())
 }
+
+func DisableVersionResponse(
+	t *testing.T,
+	projectName string,
+	secretName string,
+	version int,
+) (string, string, httpmock.Responder) {
+	var body bytes.Buffer
+	encorder := json.NewEncoder(&body)
+	encorder.SetIndent("", "  ")
+	if err := encorder.Encode(map[string]any{
+		"name":       fmt.Sprintf("projects/%d/secrets/%s/versions/%d", projectNumber, secretName, version),
+		"createTime": "2001-01-01T00:00:00.000000Z",
+		"state":      2,
+		"replicationStatus": map[string]any{
+			"automatic": map[string]any{},
+		},
+		"etag":                           fmt.Sprintf("\"8888888888888%d\"", version),
+		"clientSpecifiedPayloadChecksum": true,
+	}); err != nil {
+		t.Fatal(err)
+	}
+
+	url := fmt.Sprintf("https://secretmanager.googleapis.com/v1/projects/%d/secrets/%s/versions/%d:disable", projectNumber, secretName, version)
+	return http.MethodPost,
+		url,
+		httpmock.NewStringResponder(http.StatusOK, body.String())
+}

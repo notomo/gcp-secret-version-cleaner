@@ -14,3 +14,7 @@ destroy_dry_run:
 	$(MAKE) _execute CLEANER_ARGS="destroy --dry-run"
 destroy_run:
 	$(MAKE) _execute CLEANER_ARGS="destroy"
+disable_dry_run:
+	$(MAKE) _execute CLEANER_ARGS="disable --dry-run"
+disable_run:
+	$(MAKE) _execute CLEANER_ARGS="disable"

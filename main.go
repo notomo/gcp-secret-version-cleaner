@@ -79,6 +79,43 @@ func main() {
 					},
 				},
 			},
+
+			{
+				Name: "disable",
+				Action: func(c *cli.Context) error {
+					baseTransport := app.LogTransport(c.String(paramLogDir), http.DefaultTransport)
+
+					return app.Disable(
+						c.Context,
+						c.String(paramProjectName),
+						c.String(paramSecretName),
+						c.String(paramFilter),
+						c.Uint(paramKeepRecent),
+						baseTransport,
+						c.Bool(paramDryRun),
+					)
+				},
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:     paramFilter,
+						Required: false,
+						Value:    "state:ENABLED",
+						Usage:    "secret version filter : https://cloud.google.com/secret-manager/docs/filtering ",
+					},
+					&cli.UintFlag{
+						Name:     paramKeepRecent,
+						Required: false,
+						Value:    0,
+						Usage:    "keep recent count (applied after filter option)",
+					},
+					&cli.BoolFlag{
+						Name:     paramDryRun,
+						Required: false,
+						Value:    false,
+						Usage:    "dry run",
+					},
+				},
+			},
 		},
 	}
 
