@@ -22,7 +22,8 @@ const (
 func main() {
 
 	app := &cli.App{
-		Name: "gcp-secret-version-cleaner",
+		Name:        "gcp-secret-version-cleaner",
+		Description: "command to destroy/disable gcp secret manager's secret version with filter",
 
 		Flags: []cli.Flag{
 			&cli.StringFlag{
