@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	cloud.google.com/go/secretmanager v1.11.3
-	github.com/henvic/httpretty v0.1.2
+	github.com/henvic/httpretty v0.1.3
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
 	github.com/urfave/cli/v2 v2.25.7
