@@ -9,7 +9,7 @@ require (
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
 	github.com/urfave/cli/v2 v2.27.1
 	golang.org/x/oauth2 v0.16.0
-	google.golang.org/api v0.160.0
+	google.golang.org/api v0.161.0
 )
 
 require (
