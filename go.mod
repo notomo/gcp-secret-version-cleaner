@@ -3,7 +3,7 @@ module github.com/notomo/gcp-secret-version-cleaner
 go 1.21
 
 require (
-	cloud.google.com/go/secretmanager v1.13.1
+	cloud.google.com/go/secretmanager v1.13.2
 	github.com/henvic/httpretty v0.1.3
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
@@ -41,7 +41,7 @@ require (
 	golang.org/x/text v0.16.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/genproto v0.0.0-20240617180043-68d350f18fd4 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20240610135401-a8a62080eff3 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20240617180043-68d350f18fd4 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240617180043-68d350f18fd4 // indirect
 	google.golang.org/grpc v1.64.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
