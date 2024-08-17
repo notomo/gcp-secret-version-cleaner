@@ -7,7 +7,7 @@ require (
 	github.com/henvic/httpretty v0.1.3
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
-	github.com/urfave/cli/v2 v2.27.3
+	github.com/urfave/cli/v2 v2.27.4
 	golang.org/x/oauth2 v0.22.0
 	google.golang.org/api v0.192.0
 )
