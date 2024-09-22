@@ -1,6 +1,6 @@
 module github.com/notomo/gcp-secret-version-cleaner
 
-go 1.21
+go 1.23
 
 require (
 	cloud.google.com/go/secretmanager v1.14.1
