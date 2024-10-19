@@ -7,7 +7,7 @@ require (
 	github.com/henvic/httpretty v0.1.4
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
-	github.com/urfave/cli/v2 v2.27.4
+	github.com/urfave/cli/v2 v2.27.5
 	golang.org/x/oauth2 v0.23.0
 	google.golang.org/api v0.201.0
 )
@@ -17,7 +17,7 @@ require (
 	cloud.google.com/go/auth/oauth2adapt v0.2.4 // indirect
 	cloud.google.com/go/compute/metadata v0.5.2 // indirect
 	cloud.google.com/go/iam v1.2.1 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.5 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
