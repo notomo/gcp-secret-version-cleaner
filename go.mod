@@ -11,7 +11,7 @@ require (
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
 	github.com/urfave/cli/v2 v2.27.7
 	golang.org/x/oauth2 v0.30.0
-	google.golang.org/api v0.240.0
+	google.golang.org/api v0.241.0
 )
 
 require (
