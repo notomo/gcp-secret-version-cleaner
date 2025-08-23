@@ -7,7 +7,7 @@ toolchain go1.24.1
 require (
 	cloud.google.com/go/secretmanager v1.15.0
 	github.com/henvic/httpretty v0.1.4
-	github.com/jarcoal/httpmock v1.4.0
+	github.com/jarcoal/httpmock v1.4.1
 	github.com/notomo/httpwriter v0.0.0-20230909041920-893c6b130a4a
 	github.com/urfave/cli/v2 v2.27.7
 	golang.org/x/oauth2 v0.30.0
